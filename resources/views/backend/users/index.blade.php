@@ -54,7 +54,7 @@
                 <h1 class="h2">Kullanıcılar</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
-                        <a href="/users/create" class="btn btn-sm btn-outline-danger">Yeni Ekle</a>
+                        <a href="{{url("/users/create")}}" class="btn btn-sm btn-outline-success"><span data-feather="plus"></span> Yeni Ekle</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,13 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->is_active}}</td>
+                                <td>
+                                    @if($user->is_active == 1)
+                                        <span class="badge bg-success">Aktif</span>
+                                    @else
+                                        <span class="badge bg-danger">Pasif</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <ul class="nav float-start">
                                         <li class="nav-item">
