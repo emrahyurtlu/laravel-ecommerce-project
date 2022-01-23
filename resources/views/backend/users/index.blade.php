@@ -72,7 +72,7 @@
                     <tbody>
                     @if(count($users) > 0)
                         @foreach($users as $user)
-                            <tr>
+                            <tr id="{{$user->user_id}}">
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
