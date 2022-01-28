@@ -3,17 +3,19 @@
 namespace Tests\Feature\Http\Controllers\Backend;
 
 use App\Models\User;
-use Illuminate\Support\Arr;
+use Faker\Generator;
+use Illuminate\Container\Container;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function test_users_index_status()
+    public function test_users_index_page_status()
     {
         $response = $this->get('/users');
         $response->assertOk();
@@ -25,29 +27,38 @@ class UserControllerTest extends TestCase
         $response->assertViewIs("backend.users.index");
     }
 
-    public function test_users_create_status()
+    public function test_users_create_form_page_status()
     {
         $response = $this->get('/users/create');
         $response->assertOk();
     }
 
-    public function test_users_create_url_goes_to_correct_view()
+    public function test_users_create_form_goes_to_correct_view()
     {
         $response = $this->get('/users/create');
         $response->assertViewIs("backend.users.insert_form");
     }
 
-    public function test_users_new_user_id_created()
+    public function test_users_new_resource_is_created()
     {
-        $user = User::factory()->count(1)->create();
-        $data = $user->toArray();
+        $generator = Container::getInstance()->make(Generator::class);
+
+        $data = [
+            "name" => $generator->name,
+            "email" => $generator->email,
+            "password" => "12345",
+            "password_confirmation" => "12345",
+            "is_admin" => $generator->boolean,
+            "is_active" => $generator->boolean,
+        ];
+
         $response = $this->post('/users', $data);
         $response->assertRedirect("/users");
     }
 
     public function test_users_existing_user_is_updated()
     {
-        $user = User::latest()->first();
+        $user = User::all()->last();
         $user->name = "UPDATED " . $user->name;
         $user->email = "email" . $user->email;
         $data = $user->toArray();
@@ -57,7 +68,7 @@ class UserControllerTest extends TestCase
 
     public function test_users_latest_user_is_deleted()
     {
-        $user = User::latest()->first();
+        $user = User::all()->last();
         $user_id = $user->user_id;
         $response = $this->delete('/users/' . $user_id);
         $response->assertOk();

@@ -8,12 +8,15 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->returnUrl = "/users";
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,33 +46,12 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): RedirectResponse
     {
-        $name = $request->get("name");
-        $email = $request->get("email");
-        $password = $request->get("password");
-        $is_admin = $request->get("is_admin", 0);
-        $is_active = $request->get("is_active", 0);
-
         $user = new User();
-        $user->name = $name;
-        $user->email = $email;
-        $user->password = Hash::make($password);
-        $user->is_admin = $is_admin;
-        $user->is_active = $is_active;
-
+        $data = $this->prepare($request, $user->getFillable());
+        $user->fill($data);
         $user->save();
 
-        return Redirect::to("/users", 302);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return "show => $id";
+        return Redirect::to($this->returnUrl);
     }
 
     /**
@@ -78,9 +60,8 @@ class UserController extends Controller
      * @param int $id
      * @return View
      */
-    public function edit($id): View
+    public function edit(User $user): View
     {
-        $user = User::find($id);
         return view("backend.users.update_form", ["user" => $user]);
     }
 
@@ -88,38 +69,28 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param UserRequest $request
-     * @param int $id
+     * @param User $user
      * @return RedirectResponse
      */
-    public function update(UserRequest $request, $id): RedirectResponse
+    public function update(UserRequest $request, User $user): RedirectResponse
     {
-        $name = $request->get("name");
-        $email = $request->get("email");
-        $is_admin = $request->get("is_admin", 0);
-        $is_active = $request->get("is_active", 0);
-
-        $user = User::find($id);
-        $user->name = $name;
-        $user->email = $email;
-        $user->is_admin = $is_admin;
-        $user->is_active = $is_active;
-
+        $data = $this->prepare($request, $user->getFillable());
+        $user->fill($data);
         $user->save();
 
-        return Redirect::to("/users");
+        return Redirect::to($this->returnUrl);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param User $user
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
-        $user = User::find($id);
         $user->delete();
-        return response()->json(["message" => "Done", "id" => $id]);
+        return response()->json(["message" => "Done", "id" => $user->user_id]);
     }
 
     /**
@@ -127,16 +98,23 @@ class UserController extends Controller
      *
      * @return View
      */
-    public function passwordForm(User $user)
+    public function passwordForm(User $user): View
     {
         return view("backend.users.password_form", ["user" => $user]);
     }
 
-    public function changePassword(User $user, UserRequest $request)
+    /**
+     * Updates the specified user's password.
+     *
+     * @param User $user
+     * @param UserRequest $request
+     * @return RedirectResponse
+     */
+    public function changePassword(User $user, UserRequest $request): RedirectResponse
     {
-        $password = $request->get("password");
-        $user->password = Hash::make($password);
+        $data = $this->prepare($request, $user->getFillable());
+        $user->fill($data);
         $user->save();
-        return Redirect::to("/users");
+        return Redirect::to($this->returnUrl);
     }
 }
