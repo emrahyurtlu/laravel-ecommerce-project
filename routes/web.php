@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "Merhaba, burası anasayfa";
 });
 
 Route::resource("/users", UserController::class);

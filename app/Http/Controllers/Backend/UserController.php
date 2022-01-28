@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return Redirect::to("/users");
+        return Redirect::to("/users", 302);
     }
 
     /**
