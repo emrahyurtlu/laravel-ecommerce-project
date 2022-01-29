@@ -20,8 +20,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => "12345", // password
             'remember_token' => Str::random(10),
-            'is_admin' => 0,
-            'is_active' => 1
+            'is_admin' => $this->faker->boolean,
+            'is_active' => $this->faker->boolean
         ];
     }
 

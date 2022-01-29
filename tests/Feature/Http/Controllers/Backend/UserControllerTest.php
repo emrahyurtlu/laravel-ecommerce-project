@@ -3,12 +3,11 @@
 namespace Tests\Feature\Http\Controllers\Backend;
 
 use App\Models\User;
-use Faker\Generator;
-use Illuminate\Container\Container;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+    //use DatabaseMigrations;
 
     /**
      * A basic feature test example.
@@ -39,18 +38,13 @@ class UserControllerTest extends TestCase
         $response->assertViewIs("backend.users.insert_form");
     }
 
+
     public function test_users_new_resource_is_created()
     {
-        $generator = Container::getInstance()->make(Generator::class);
-
-        $data = [
-            "name" => $generator->name,
-            "email" => $generator->email,
-            "password" => "12345",
-            "password_confirmation" => "12345",
-            "is_admin" => $generator->boolean,
-            "is_active" => $generator->boolean,
-        ];
+        $user = User::factory()->make();
+        $data = $user->toArray();
+        $data["password"] = "12345";
+        $data["password_confirmation"] = "12345";
 
         $response = $this->post('/users', $data);
         $response->assertRedirect("/users");
@@ -73,5 +67,6 @@ class UserControllerTest extends TestCase
         $response = $this->delete('/users/' . $user_id);
         $response->assertOk();
         $response->assertJson(["message" => "Done", "id" => $user_id]);
+        $this->assertDeleted($user);
     }
 }
