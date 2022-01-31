@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class AddressController extends Controller
@@ -28,7 +27,7 @@ class AddressController extends Controller
     public function index(User $user): View
     {
         $addrs = $user->addrs;
-        return view("backend.addresses.index", ["addrs" => $addrs]);
+        return view("backend.addresses.index", ["addrs" => $addrs, "user" => $user]);
     }
 
     /**
@@ -44,10 +43,11 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param User $user
+     * @param AddressRequest $request
      * @return RedirectResponse
      */
-    public function store(User $user, AddressRequest $request): RedirectResponse
+    public function store(AddressRequest $request, User $user): RedirectResponse
     {
         $addr = new Address();
         $data = $this->prepare($request, $addr->getFillable());
@@ -101,7 +101,7 @@ class AddressController extends Controller
      * @param Address $address
      * @return JsonResponse
      */
-    public function destroy(Address $address): JsonResponse
+    public function destroy(User $user, Address $address): JsonResponse
     {
         $address->delete();
         return response()->json(["message" => "Done", "id" => $address->address_id]);

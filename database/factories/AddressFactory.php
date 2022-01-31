@@ -15,11 +15,11 @@ class AddressFactory extends Factory
     {
         return [
             'user_id' => 2,
-            'city' => $this->faker->city,
-            'district' => $this->faker->city,
+            'city' => $this->faker->city(),
+            'district' => $this->faker->city(),
             'zipcode' => $this->faker->randomDigitNotZero(),
-            'address' => $this->faker->address,
-            'is_default' => $this->faker->boolean
+            'address' => $this->faker->address(),
+            'is_default' => $this->faker->boolean()
         ];
     }
 }

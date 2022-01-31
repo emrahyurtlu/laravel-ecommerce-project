@@ -28,7 +28,7 @@ class AddressRequest extends FormRequest
             "city" => "required|min:3",
             "district" => "required|min:3",
             "zipcode" => "required|min:3",
-            "address" => "required|min:30"
+            "address" => "required|min:10"
         ];
     }
 
@@ -44,7 +44,7 @@ class AddressRequest extends FormRequest
             "zipcode.required" => "Bu alan zorunludur.",
             "zipcode.min" => "Bu alan en az 3 karakterden oluşmalıdır.",
             "address.required" => "Bu alan zorunludur.",
-            "address.min" => "Bu alan en az 30 karakterden oluşmalıdır.",
+            "address.min" => "Bu alan en az 10 karakterden oluşmalıdır.",
         ];
     }
 }
