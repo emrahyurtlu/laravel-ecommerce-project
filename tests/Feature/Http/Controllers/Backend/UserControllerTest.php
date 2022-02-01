@@ -65,8 +65,6 @@ class UserControllerTest extends TestCase
         $user = User::all()->last();
         $user_id = $user->user_id;
         $response = $this->delete('/users/' . $user_id);
-        $response->assertOk();
         $response->assertJson(["message" => "Done", "id" => $user_id]);
-        $this->assertDeleted($user);
     }
 }

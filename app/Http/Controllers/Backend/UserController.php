@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CategoryRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -41,10 +41,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserRequest $request
+     * @param CategoryRequest $request
      * @return RedirectResponse
      */
-    public function store(UserRequest $request): RedirectResponse
+    public function store(CategoryRequest $request): RedirectResponse
     {
         $user = new User();
         $data = $this->prepare($request, $user->getFillable());
@@ -68,11 +68,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UserRequest $request
+     * @param CategoryRequest $request
      * @param User $user
      * @return RedirectResponse
      */
-    public function update(UserRequest $request, User $user): RedirectResponse
+    public function update(CategoryRequest $request, User $user): RedirectResponse
     {
         $data = $this->prepare($request, $user->getFillable());
         $user->fill($data);
@@ -107,10 +107,10 @@ class UserController extends Controller
      * Updates the specified user's password.
      *
      * @param User $user
-     * @param UserRequest $request
+     * @param CategoryRequest $request
      * @return RedirectResponse
      */
-    public function changePassword(User $user, UserRequest $request): RedirectResponse
+    public function changePassword(User $user, CategoryRequest $request): RedirectResponse
     {
         $data = $this->prepare($request, $user->getFillable());
         $user->fill($data);
