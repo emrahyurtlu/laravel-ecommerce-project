@@ -10,23 +10,13 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <label for="password" class="form-label">Şifre Giriniz</label>
-                    <input type="password" class="form-control" id="password" name="password"
-                           placeholder="Şifre giriniz" autocomplete="new-password">
-                    @error("password")
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                    <x-input label="Şifre Giriniz" placeholder="Şifre giriniz" field="password" type="password"/>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <label for="password_confirmation" class="form-label">Şifre Tekrarı</label>
-                    <input type="password" class="form-control" id="password_confirmation"
-                           name="password_confirmation" placeholder="Şifrenizi tekrar giriniz"
-                           autocomplete="new-password">
-                    @error("password")
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                    <x-input label="Şifre Tekrarı" placeholder="Şifrenizi tekrar giriniz" field="password_confirmation"
+                             type="password"/>
                 </div>
             </div>
         </div>

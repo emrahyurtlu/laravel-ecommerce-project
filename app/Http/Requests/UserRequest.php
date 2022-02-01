@@ -12,17 +12,18 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
+
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $user_id = $this->request->get("user_id");
         return [
@@ -32,7 +33,7 @@ class UserRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             "name.required" => "Bu alan zorunludur.",
@@ -48,8 +49,7 @@ class UserRequest extends FormRequest
 
     protected function passedValidation()
     {
-        if ($this->request->has("password"))
-        {
+        if ($this->request->has("password")) {
             $password = $this->request->get("password");
             $this->request->set("password", Hash::make($password));
         }

@@ -12,43 +12,21 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <label for="name" class="form-label">Ad Soyad</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Ad soyad giriniz"
-                           value="{{old("name", $user->name)}}">
-                    @error("name")
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                    <x-input label="Ad Soyad" placeholder="Ad soyad giriniz" field="name" value="{{$user->name}}" />
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <label for="email" class="form-label">Eposta giriniz</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Eposta giriniz"
-                           value="{{old("email", $user->email)}}">
-                    @error("email")
-                    <span class="text-danger">{{$message}}</span>
-                    @enderror
+                    <x-input label="Eposta giriniz" placeholder="Eposta giriniz" field="email" type="email" value="{{$user->email}}" />
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <div class="form-check mt-4">
-                    <input class="form-check-input" type="checkbox" id="is_admin" name="is_admin"
-                           value="1" {{$user->is_admin == 1 ? "checked" : ""}}>
-                    <label class="form-check-label" for="is_admin">
-                        Yetkili Kullanıcı
-                    </label>
-                </div>
+                <x-checkbox field="is_admin" label="Yetkili Kullanıcı" checked="{{$user->is_admin == 1}}" />
             </div>
             <div class="col-lg-6">
-                <div class="form-check mt-4">
-                    <input class="form-check-input" type="checkbox" id="is_active" name="is_active"
-                           value="1" {{$user->is_active == 1 ? "checked" : ""}}>
-                    <label class="form-check-label" for="is_active">
-                        Aktif Kullanıcı
-                    </label>
-                </div>
+                <x-checkbox field="is_active" label="Aktif Kullanıcı" checked="{{$user->is_active == 1}}" />
             </div>
         </div>
         <div class="row">
