@@ -1,7 +1,7 @@
 @extends("backend.shared.backend_theme")
-@section("title","Ürün Modülü")
-@section("subtitle","Ürünler")
-@section("btn_url",url("/products/create"))
+@section("title","Ürünler Modülü")
+@section("subtitle","Fotoğraflar")
+@section("btn_url",url("/products/$product->product_id/images/create"))
 @section("btn_label","Yeni Ekle")
 @section("btn_icon","plus")
 @section("content")
@@ -9,25 +9,21 @@
         <thead>
         <tr>
             <th scope="col">Sıra No</th>
-            <th scope="col">Ürün Adı</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Fiyat</th>
-            <th scope="col">Eski Fiyat</th>
+            <th scope="col">Fotoğraf</th>
+            <th scope="col">Açıklama</th>
             <th scope="col">Durum</th>
             <th scope="col">İşlemler</th>
         </tr>
         </thead>
         <tbody>
-        @if(count($products) > 0)
-            @foreach($products as $product)
-                <tr id="{{$product->product_id}}">
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$product->name}}</td>
-                    <td>{{$product->category->name}}</td>
-                    <td>{{$product->price}}</td>
-                    <td>{{$product->old_price}}</td>
+        @if(count($product->images) > 0)
+            @foreach($product->images as $image)
+                <tr id="{{$image->image_id}}">
+                    <td>{{$image->seq}}</td>
+                    <td>{{$image->image_url}}</td>
+                    <td>{{$image->alt}}</td>
                     <td>
-                        @if($product->is_active == 1)
+                        @if($image->is_active == 1)
                             <span class="badge bg-success">Aktif</span>
                         @else
                             <span class="badge bg-danger">Pasif</span>
@@ -36,23 +32,16 @@
                     <td>
                         <ul class="nav float-start">
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="{{url("/products/$product->product_id/edit")}}">
+                                <a class="nav-link text-black" href="{{url("/products/$product->product_id/images/$image->image_id/edit")}}">
                                     <span data-feather="edit"></span>
                                     Güncelle
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link list-item-delete text-black"
-                                   href="{{url("/products/$product->product_id")}}">
+                                   href="{{url("/products/$product->product_id/images/$image->image_id")}}">
                                     <span data-feather="trash-2"></span>
                                     Sil
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-black"
-                                   href="{{url("/products/$product->product_id/images")}}">
-                                    <span data-feather="image"></span>
-                                    Fotoğraflar
                                 </a>
                             </li>
                         </ul>
@@ -61,7 +50,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="7">
+                <td colspan="5">
                     <p class="text-center">Herhangi bir kayıt bulunamadı.</p>
                 </td>
             </tr>

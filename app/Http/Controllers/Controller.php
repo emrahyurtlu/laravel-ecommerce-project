@@ -33,6 +33,14 @@ class Controller extends BaseController
             }
         }
 
+        if (count($request->allFiles()) > 0) {
+            foreach ($request->allFiles() as $key => $value) {
+                $uploadedFile = $request->file($key);
+                $data[$key] = $uploadedFile->hashName();
+                $uploadedFile->storeAs($this->fileRepo, $data[$key]);
+            }
+        }
+
         return $data;
     }
 }

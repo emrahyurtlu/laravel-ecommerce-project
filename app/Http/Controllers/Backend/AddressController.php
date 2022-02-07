@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddressRequest;
+use App\Http\Requests\ProductImageRequest;
 use App\Models\Address;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -44,10 +44,10 @@ class AddressController extends Controller
      * Store a newly created resource in storage.
      *
      * @param User $user
-     * @param AddressRequest $request
+     * @param ProductImageRequest $request
      * @return RedirectResponse
      */
-    public function store(AddressRequest $request, User $user): RedirectResponse
+    public function store(ProductImageRequest $request, User $user): RedirectResponse
     {
         $addr = new Address();
         $data = $this->prepare($request, $addr->getFillable());
@@ -79,12 +79,12 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AddressRequest $request
+     * @param ProductImageRequest $request
      * @param User $user
      * @param Address $address
      * @return RedirectResponse
      */
-    public function update(AddressRequest $request, User $user, Address $address): RedirectResponse
+    public function update(ProductImageRequest $request, User $user, Address $address): RedirectResponse
     {
         $data = $this->prepare($request, $address->getFillable());
         $address->fill($data);
