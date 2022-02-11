@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductImagesTable extends Migration
+class CreateOrderDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +15,11 @@ class CreateProductImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->id("image_id");
+        Schema::create('order_details', function (Blueprint $table) {
+            $table->id("order_details_id");
+            $table->foreignIdFor(Order::class, "order_id");
             $table->foreignIdFor(Product::class, "product_id");
-            $table->string("image_url");
-            $table->string("alt")->nullable();
-            $table->string("seq")->nullable()->default(0);
-            $table->boolean("is_active")->default(0);
+            $table->integer("quantity");
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateProductImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('order_details');
     }
 }

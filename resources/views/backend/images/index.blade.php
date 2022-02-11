@@ -20,7 +20,14 @@
             @foreach($product->images as $image)
                 <tr id="{{$image->image_id}}">
                     <td>{{$image->seq}}</td>
-                    <td>{{$image->image_url}}</td>
+                    <td>
+                        @if(Str::of($image->image_url)->isNotEmpty())
+                            <img src="{{asset("/storage/products/$image->image_url")}}"
+                                 alt="{{$image->alt}}"
+                                 class="img-thumbnail"
+                                 width="80">
+                        @endif
+                    </td>
                     <td>{{$image->alt}}</td>
                     <td>
                         @if($image->is_active == 1)
@@ -32,7 +39,8 @@
                     <td>
                         <ul class="nav float-start">
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="{{url("/products/$product->product_id/images/$image->image_id/edit")}}">
+                                <a class="nav-link text-black"
+                                   href="{{url("/products/$product->product_id/images/$image->image_id/edit")}}">
                                     <span data-feather="edit"></span>
                                     Güncelle
                                 </a>

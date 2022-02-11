@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\Invoice;
 use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductImagesTable extends Migration
+class CreateInvoiceDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +15,13 @@ class CreateProductImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->id("image_id");
+        Schema::create('invoice_details', function (Blueprint $table) {
+            $table->id("invoice_detail_id");
+            $table->foreignIdFor(Invoice::class, "invoice_id");
             $table->foreignIdFor(Product::class, "product_id");
-            $table->string("image_url");
-            $table->string("alt")->nullable();
-            $table->string("seq")->nullable()->default(0);
-            $table->boolean("is_active")->default(0);
+            $table->integer("quantity");
+            $table->float("unit_price");
+            $table->float("total");
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateProductImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('invoice_details');
     }
 }

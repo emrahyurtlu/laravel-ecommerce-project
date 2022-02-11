@@ -3,17 +3,31 @@
 namespace Tests\Feature\Http\Controllers\Backend;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
-    //use DatabaseMigrations;
+    use DatabaseMigrations;
+    private static array $userData;
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+
+        self::$userData = [
+            'name' => "My Test user",
+            'email' => "eccount@domain.com",
+            'email_verified_at' => now(),
+            'password' => "12345",
+            'password_confirmation' => "12345",
+            'remember_token' => Str::random(10),
+            'is_admin' => true,
+            'is_active' => true
+        ];
+    }
+
     public function test_users_index_page_status()
     {
         $response = $this->get('/users');
@@ -41,17 +55,13 @@ class UserControllerTest extends TestCase
 
     public function test_users_new_resource_is_created()
     {
-        $user = User::factory()->make();
-        $data = $user->toArray();
-        $data["password"] = "12345";
-        $data["password_confirmation"] = "12345";
-
-        $response = $this->post('/users', $data);
+        $response = $this->post('/users', self::$userData);
         $response->assertRedirect("/users");
     }
 
     public function test_users_existing_user_is_updated()
     {
+        $this->post('/users', self::$userData);
         $user = User::all()->last();
         $user->name = "UPDATED " . $user->name;
         $user->email = "email" . $user->email;
@@ -62,6 +72,7 @@ class UserControllerTest extends TestCase
 
     public function test_users_latest_user_is_deleted()
     {
+        $this->post('/users', self::$userData);
         $user = User::all()->last();
         $user_id = $user->user_id;
         $response = $this->delete('/users/' . $user_id);

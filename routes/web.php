@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\ProductImageController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "Merhaba, burası anasayfa";
-});
+Route::get('/',[HomeController::class, 'index']);
+Route::get('/kategori/{category:slug}',[\App\Http\Controllers\Frontend\CategoryController::class, 'index']);
 
 Route::resource("/users", UserController::class);
 Route::get("/users/{user}/change-password", [UserController::class, 'passwordForm']);
