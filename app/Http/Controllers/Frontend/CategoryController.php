@@ -10,9 +10,8 @@ class CategoryController extends Controller
 {
     public function index(Category $category): View
     {
-        $products = $category->products;
         $allCategories = Category::all()->where("is_active", true);
 
-        return view("frontend.home.index", ["categories" => $allCategories, "products" => $products]);
+        return view("frontend.home.index", ["categories" => $allCategories, "products" => $category->products]);
     }
 }

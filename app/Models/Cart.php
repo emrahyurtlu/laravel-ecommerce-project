@@ -10,11 +10,15 @@ class Cart extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = "card_id";
+    protected $primaryKey = "cart_id";
 
     protected $fillable = [
-        'card_id',
+        'cart_id',
         'user_id',
         'code'
     ];
+
+    public function details() {
+        return $this->hasMany(CartDetails::class,"cart_id","cart_id");
+    }
 }

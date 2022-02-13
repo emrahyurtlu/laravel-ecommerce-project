@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-ticaret Projemiz</title>
+    <title>Sepetim</title>
 
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
 </head>
@@ -46,39 +46,43 @@
     </div>
     <div class="row">
         <div class="col-sm-3 pt-4">
-            <h5>Kategoriler</h5>
+            <h5>Hesabım</h5>
             <div class="list-group">
-                <a href="/"
-                   class="list-group-item list-group-item-action">Hepsi</a>
-                @if(count($categories) > 0)
-                    @foreach($categories as $category)
-                        <a href="/kategori/{{$category->slug}}"
-                           class="list-group-item list-group-item-action">{{$category->name}}</a>
-                    @endforeach
-                @endif
+                <a href="/" class="list-group-item list-group-item-action">Sepetim</a>
             </div>
         </div>
         <div class="col-sm-9 pt-4">
-            <h5>Ürünler</h5>
-            @if(count($products) > 0)
-                <div class="card-group">
-                    @foreach($products as $product)
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{asset("/storage/products/".$product->images[0]->image_url)}}"
-                                 class="card-img-top" alt="{{$product->images[0]->alt}}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$product->name}}</h5>
-                                <h6 class="card-title">Fiyat: {{$product->price}}TL</h6>
-                                <p class="card-text">{{$product->lead}}</p>
-                                <a href="/sepete-ekle/{{$product->product_id}}" class="btn btn-primary">Sepete Ekle</a>
-                            </div>
-                        </div>
+            <h5>Sepetim</h5>
+            @if(count($cart->details) > 0)
+                <table class="table">
+                    <thead>
+                    <th>Fotoğraf</th>
+                    <th>Ürün</th>
+                    <th>Adet</th>
+                    <th>Fiyat</th>
+                    <th>İşlemler</th>
+                    </thead>
+                    <tbody>
+                    @foreach($cart->details as $detail)
+                        <tr>
+                            <td>
+                                <img src="{{asset("/storage/products/".$detail->product->images[0]->image_url)}}" alt="{{$detail->product->images[0]->alt}}">
+                            </td>
+                            <td>{{ $detail->product->name }}</td>
+                            <td>{{ $detail->quantity }}</td>
+                            <td>{{ $detail->product->price }}</td>
+                            <td>
+                                <a href="/sepetim/sil/{{$detail->cart_detail_id}}">Sepetten Sil</a>
+                            </td>
+                        </tr>
                     @endforeach
-                </div>
+                    </tbody>
+                </table>
+            @else
+                <p class="text-danger text-center">Sepetinizde ürün bulunamadı.</p>
             @endif
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="{{asset("js/app.js")}}"></script>
 </html>

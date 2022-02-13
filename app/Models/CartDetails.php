@@ -9,12 +9,17 @@ class CartDetails extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "card_detail_id";
+    protected $primaryKey = "cart_detail_id";
 
     protected $fillable = [
-        'card_detail_id',
-        'card_id',
+        'cart_detail_id',
+        'cart_id',
         'product_id',
         'quantity',
     ];
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, "product_id", "product_id");
+    }
 }
