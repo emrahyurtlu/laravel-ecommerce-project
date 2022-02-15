@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\ProductImageController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,9 @@ Route::group(["middleware" => "auth"], function () {
     Route::get("/sepetim", [CartController::class, 'index']);
     Route::get("/sepetim/ekle/{product}", [CartController::class, 'add']);
     Route::get("/sepetim/sil/{cartDetails}", [CartController::class, 'remove']);
+
+    Route::get("/satin-al", [CheckoutController::class, 'showCheckoutForm']);
+    Route::post("/satin-al", [CheckoutController::class, 'checkout']);
 });
 
 

@@ -66,7 +66,8 @@
                     @foreach($cart->details as $detail)
                         <tr>
                             <td>
-                                <img src="{{asset("/storage/products/".$detail->product->images[0]->image_url)}}" alt="{{$detail->product->images[0]->alt}}" width="100">
+                                <img src="{{asset("/storage/products/".$detail->product->images[0]->image_url)}}"
+                                     alt="{{$detail->product->images[0]->alt}}" width="100">
                             </td>
                             <td>{{ $detail->product->name }}</td>
                             <td>{{ $detail->quantity }}</td>
@@ -78,6 +79,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <a href="/satin-al" class="btn btn-success float-end">Satın Al</a>
             @else
                 <p class="text-danger text-center">Sepetinizde ürün bulunamadı.</p>
             @endif

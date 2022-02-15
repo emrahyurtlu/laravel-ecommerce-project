@@ -6,21 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartDetails;
 use App\Models\Product;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
-    public function index()
+    private string $return_url = "/sepetim";
+
+    public function index(): View
     {
-
         $cart = $this->getOrCreateCart();
-
-        return view("frontend.user.index", ["cart" => $cart]);
+        return view("frontend.cart.index", ["cart" => $cart]);
     }
 
     /**
+     *
+     * Lists the cart content
+     *
      * @return Cart
      */
     private function getOrCreateCart(): Cart
@@ -33,30 +37,44 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function add(Product $product, int $quantity = 1)
+    /**
+     * Add product as cart detail
+     *
+     * @param Product $product
+     * @param int $quantity
+     * @return RedirectResponse
+     */
+    public function add(Product $product, int $quantity = 1): RedirectResponse
     {
         $cart = $this->getOrCreateCart();
-        /*$details = new CartDetails(
+        $details = new CartDetails(
             [
                 "cart_id" => $cart->cart_id,
                 "product_id" => $product->product_id,
                 "quantity" => $quantity,
             ]
         );
-        $details->save();*/
+        $details->save();
 
-        $cart->details()->create([
+        /*$cart->details()->create([
             "product_id" => $product->product_id,
             "quantity" => $quantity,
-        ]);
+        ]);*/
 
 
-        return redirect("/sepetim");
+        return redirect($this->return_url);
     }
 
+    /**
+     *
+     * Remove cart detail from cart
+     *
+     * @param CartDetails $cartDetails
+     * @return RedirectResponse
+     */
     public function remove(CartDetails $cartDetails): RedirectResponse
     {
         $cartDetails->delete();
-        return redirect("/sepetim");
+        return redirect($this->return_url);
     }
 }
