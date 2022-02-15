@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-4 offset-4">
             <main class="mt-5">
-                <form method="POST" action="{{url("/sepetim/satin-al")}}">
+                <form method="POST" action="{{url("/satin-al")}}">
                     @csrf
                     <h1 class="h3 mb-3 fw-normal">Kredi Kartı Bilgileri</h1>
 
