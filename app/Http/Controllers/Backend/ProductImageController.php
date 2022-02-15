@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductImageRequest;
-use App\Models\ProductImage;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -50,8 +50,6 @@ class ProductImageController extends Controller
      */
     public function store(ProductImageRequest $request, Product $product): RedirectResponse
     {
-        //$request->file("image_url")->store("product_images/asdfasfsad.jpg");
-
         $productImage = new ProductImage();
         $data = $this->prepare($request, $productImage->getFillable());
         $productImage->fill($data);

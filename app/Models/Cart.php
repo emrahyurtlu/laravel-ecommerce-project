@@ -15,7 +15,8 @@ class Cart extends Model
     protected $fillable = [
         'cart_id',
         'user_id',
-        'code'
+        'code',
+        'is_active'
     ];
 
     public function details() {

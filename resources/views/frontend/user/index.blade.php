@@ -66,7 +66,7 @@
                     @foreach($cart->details as $detail)
                         <tr>
                             <td>
-                                <img src="{{asset("/storage/products/".$detail->product->images[0]->image_url)}}" alt="{{$detail->product->images[0]->alt}}">
+                                <img src="{{asset("/storage/products/".$detail->product->images[0]->image_url)}}" alt="{{$detail->product->images[0]->alt}}" width="100">
                             </td>
                             <td>{{ $detail->product->name }}</td>
                             <td>{{ $detail->quantity }}</td>
