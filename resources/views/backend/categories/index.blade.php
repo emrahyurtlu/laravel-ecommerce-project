@@ -32,7 +32,8 @@
                     <td>
                         <ul class="nav float-start">
                             <li class="nav-item">
-                                <a class="nav-link text-black" href="{{url("/categories/$category->category_id/edit")}}">
+                                <a class="nav-link text-black"
+                                   href="{{url("/categories/$category->category_id/edit")}}">
                                     <span data-feather="edit"></span>
                                     Güncelle
                                 </a>

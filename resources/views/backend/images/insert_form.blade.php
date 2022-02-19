@@ -5,29 +5,30 @@
 @section("btn_label","Geri Dön")
 @section("btn_icon","arrow-left")
 @section("content")
-    <form action="{{url("/products/$product->product_id/images")}}" method="POST" autocomplete="off" novalidate enctype="multipart/form-data">
+    <form action="{{url("/products/$product->product_id/images")}}" method="POST" autocomplete="off" novalidate
+          enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="product_id" value="{{$product->product_id}}">
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Dosya Yükle" placeholder="" field="image_url" type="file" />
+                    <x-input label="Dosya Yükle" placeholder="" field="image_url" type="file"/>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Açıklama" placeholder="Kısa açıklama girinizi" field="alt" />
+                    <x-input label="Açıklama" placeholder="Kısa açıklama girinizi" field="alt"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Sıra No" placeholder="Sıra no giriniz" field="seq" />
+                    <x-input label="Sıra No" placeholder="Sıra no giriniz" field="seq"/>
                 </div>
             </div>
             <div class="col-lg-6">
-                <x-checkbox field="is_active" label="Aktif" />
+                <x-checkbox field="is_active" label="Aktif"/>
             </div>
         </div>
         <div class="row">

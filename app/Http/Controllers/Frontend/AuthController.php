@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
-    public function signInForm(): View
+    public function showSignInForm(): View
     {
         return view("frontend.auth.signin_form");
     }
@@ -34,7 +34,7 @@ class AuthController extends Controller
         }
     }
 
-    public function signUpForm(): View
+    public function showSignUpForm(): View
     {
         return view("frontend.auth.signup_form");
     }
@@ -50,7 +50,8 @@ class AuthController extends Controller
         return Redirect::to("/giris");
     }
 
-    public function logOut() {
+    public function logout()
+    {
         Auth::logout();
         return redirect("/");
     }

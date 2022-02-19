@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Ürün Adı" placeholder="Ürün adı giriniz" field="name" value="{{$product->name}}" />
+                    <x-input label="Ürün Adı" placeholder="Ürün adı giriniz" field="name" value="{{$product->name}}"/>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -21,7 +21,8 @@
                     <select name="category_id" id="category_id" class="form-control">
                         <option value="-1">Seçiniz</option>
                         @foreach($categories as $category)
-                            <option value="{{$category->category_id}}" {{$product->category_id == $category->category_id ? "selected" : ""}}>{{$category->name}}</option>
+                            <option
+                                value="{{$category->category_id}}" {{$product->category_id == $category->category_id ? "selected" : ""}}>{{$category->name}}</option>
                         @endforeach
                     </select>
                     @error("category_id")
@@ -33,32 +34,35 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Ürün Fiyatı" placeholder="Fiyat giriniz" field="price" value="{{$product->price}}" />
+                    <x-input label="Ürün Fiyatı" placeholder="Fiyat giriniz" field="price" value="{{$product->price}}"/>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Eski Fiyat" placeholder="Eski fiyat giriniz" field="old_price"  value="{{$product->old_price}}" />
+                    <x-input label="Eski Fiyat" placeholder="Eski fiyat giriniz" field="old_price"
+                             value="{{$product->old_price}}"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="mt-2">
-                    <x-input label="Kısa Açıklama" placeholder="Kısa açıklama giriniz" field="lead" value="{{$product->lead}}"/>
+                    <x-input label="Kısa Açıklama" placeholder="Kısa açıklama giriniz" field="lead"
+                             value="{{$product->lead}}"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="mt-2">
-                    <x-textarea label="Detaylı Açıklama" placeholder="Detaylı açıklama giriniz" field="description"  value="{{$product->description}}" />
+                    <x-textarea label="Detaylı Açıklama" placeholder="Detaylı açıklama giriniz" field="description"
+                                value="{{$product->description}}"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <x-checkbox field="is_active" label="Aktif Ürün" checked="{{$product->is_active == 1}}" />
+                <x-checkbox field="is_active" label="Aktif Ürün" checked="{{$product->is_active == 1}}"/>
             </div>
         </div>
         <div class="row">

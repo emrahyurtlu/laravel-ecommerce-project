@@ -17,4 +17,9 @@ class Invoice extends Model
         'order_id',
         'code',
     ];
+
+    public function details()
+    {
+        return $this->hasMany(InvoiceDetails::class, "invoice_id", "invoice_id");
+    }
 }

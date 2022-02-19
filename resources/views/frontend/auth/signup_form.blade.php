@@ -17,24 +17,25 @@
                     <h1 class="h3 mb-3 fw-normal">Üye Olun</h1>
 
                     <div class="">
-                        <x-input label="Ad Soyad" placeholder="Ad soyad giriniz" field="name" />
+                        <x-input label="Ad Soyad" placeholder="Ad soyad giriniz" field="name"/>
                     </div>
 
                     <div class="mt-2">
-                        <x-input label="Eposta giriniz" placeholder="Eposta giriniz" field="email" type="email" />
+                        <x-input label="Eposta giriniz" placeholder="Eposta giriniz" field="email" type="email"/>
                     </div>
 
                     <div class="mt-2">
-                        <x-input label="Şifre Giriniz" placeholder="Şifre giriniz" field="password" type="password" />
+                        <x-input label="Şifre Giriniz" placeholder="Şifre giriniz" field="password" type="password"/>
                     </div>
 
                     <div class="mt-2">
-                        <x-input label="Şifre Tekrarı" placeholder="Şifrenizi tekrar giriniz" field="password_confirmation" type="password" />
+                        <x-input label="Şifre Tekrarı" placeholder="Şifrenizi tekrar giriniz"
+                                 field="password_confirmation" type="password"/>
                     </div>
 
-                   <div class="mt-2">
-                       <button class="w-100 btn btn-lg btn-primary" type="submit">Kayıt Ol</button>
-                   </div>
+                    <div class="mt-2">
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Kayıt Ol</button>
+                    </div>
                 </form>
             </main>
         </div>

@@ -16,7 +16,7 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id("cart_id");
-            $table->foreignIdFor(User::class,"user_id");
+            $table->foreignIdFor(User::class, "user_id");
             $table->string("code");
             $table->boolean("is_active");
             $table->softDeletes();

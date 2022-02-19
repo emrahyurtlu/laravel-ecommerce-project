@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,7 +47,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function addrs() {
-        return $this->hasMany(Address::class,"user_id","user_id");
+    public function addrs()
+    {
+        return $this->hasMany(Address::class, "user_id", "user_id");
+    }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class, "user_id", "user_id");
     }
 }

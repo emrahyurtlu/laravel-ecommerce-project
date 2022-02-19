@@ -15,6 +15,11 @@ class Order extends Model
     protected $fillable = [
         'order_id',
         'cart_id',
-        'coder',
+        'code',
     ];
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetails::class, "order_id", "order_id");
+    }
 }

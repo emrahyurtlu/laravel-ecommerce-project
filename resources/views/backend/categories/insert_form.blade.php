@@ -10,11 +10,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Kategori Adı" placeholder="Kategori adı giriniz" field="name" />
+                    <x-input label="Kategori Adı" placeholder="Kategori adı giriniz" field="name"/>
                 </div>
             </div>
             <div class="col-lg-6">
-                <x-checkbox field="is_active" label="Aktif Kategori" />
+                <x-checkbox field="is_active" label="Aktif Kategori"/>
             </div>
         </div>
         <div class="row">

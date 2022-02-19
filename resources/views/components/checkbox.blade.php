@@ -4,7 +4,7 @@
            id="{{$field}}"
            name="{{$field}}"
            value="1"
-           {{$checked ? "checked" : ""}}>
+        {{$checked ? "checked" : ""}}>
     <label class="form-check-label" for="{{$field}}">
         {{$label}}
     </label>

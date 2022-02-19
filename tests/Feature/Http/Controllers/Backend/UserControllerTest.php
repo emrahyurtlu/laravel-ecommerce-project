@@ -10,6 +10,7 @@ use Tests\TestCase;
 class UserControllerTest extends TestCase
 {
     use DatabaseMigrations;
+
     private static array $userData;
 
     public static function setUpBeforeClass(): void

@@ -25,13 +25,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/kategori/{category:slug}', [\App\Http\Controllers\Frontend\CategoryController::class, 'index']);
 
-Route::get("/giris", [AuthController::class, 'signInForm']);
+Route::get("/giris", [AuthController::class, 'showSignInForm']);
 Route::post("/giris", [AuthController::class, 'signIn']);
 
-Route::get("/uye-ol", [AuthController::class, 'signUpForm']);
+Route::get("/uye-ol", [AuthController::class, 'showSignUpForm']);
 Route::post("/uye-ol", [AuthController::class, 'signUp']);
 
-Route::get("/cikis", [AuthController::class, 'logOut']);
+Route::get("/cikis", [AuthController::class, 'logout']);
 
 Route::group(["middleware" => "auth"], function () {
     Route::get("/sepetim", [CartController::class, 'index']);

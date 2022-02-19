@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Ürün Adı" placeholder="Ürün adı giriniz" field="name" />
+                    <x-input label="Ürün Adı" placeholder="Ürün adı giriniz" field="name"/>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -31,32 +31,32 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Ürün Fiyatı" placeholder="Fiyat giriniz" field="price" type="number" />
+                    <x-input label="Ürün Fiyatı" placeholder="Fiyat giriniz" field="price" type="number"/>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Eski Fiyat" placeholder="Eski fiyat giriniz" field="old_price" type="number" />
+                    <x-input label="Eski Fiyat" placeholder="Eski fiyat giriniz" field="old_price" type="number"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="mt-2">
-                    <x-input label="Kısa Açıklama" placeholder="Kısa açıklama giriniz" field="lead" />
+                    <x-input label="Kısa Açıklama" placeholder="Kısa açıklama giriniz" field="lead"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="mt-2">
-                    <x-textarea label="Detaylı Açıklama" placeholder="Detaylı açıklama giriniz" field="description" />
+                    <x-textarea label="Detaylı Açıklama" placeholder="Detaylı açıklama giriniz" field="description"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <x-checkbox field="is_active" label="Aktif Ürün" />
+                <x-checkbox field="is_active" label="Aktif Ürün"/>
             </div>
         </div>
         <div class="row">

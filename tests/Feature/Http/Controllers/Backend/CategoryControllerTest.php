@@ -44,8 +44,8 @@ class CategoryControllerTest extends TestCase
     {
         $suffix = Str::random();
         $data = [
-            "name" => "Deneme kategorisi-".$suffix,
-            "slug" => "deneme-kategorisi-".$suffix
+            "name" => "Deneme kategorisi-" . $suffix,
+            "slug" => "deneme-kategorisi-" . $suffix
         ];
 
         $response = $this->post('/categories', $data);

@@ -12,18 +12,19 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input  label="Kategori Adı" placeholder="Kategori adı giriniz" field="name" value="{{$category->name}}" />
+                    <x-input label="Kategori Adı" placeholder="Kategori adı giriniz" field="name"
+                             value="{{$category->name}}"/>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mt-2">
-                    <x-input label="Slug" placeholder="Slug giriniz" field="slug" value="{{$category->slug}}" />
+                    <x-input label="Slug" placeholder="Slug giriniz" field="slug" value="{{$category->slug}}"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <x-checkbox field="is_active" label="Aktif Kategori" checked="{{$category->is_active == 1}}" />
+                <x-checkbox field="is_active" label="Aktif Kategori" checked="{{$category->is_active == 1}}"/>
             </div>
         </div>
         <div class="row">

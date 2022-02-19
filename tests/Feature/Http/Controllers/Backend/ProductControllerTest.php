@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers\Backend;
 
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -46,7 +45,7 @@ class ProductControllerTest extends TestCase
         $suffix = Str::random();
         $data = [
             "category_id" => 444,
-            "name" => "Deneme Ürünü -".$suffix,
+            "name" => "Deneme Ürünü -" . $suffix,
             "price" => 67.12,
             "lead" => "Bu alan kısa açıklama alanıdır"
         ];
@@ -60,7 +59,7 @@ class ProductControllerTest extends TestCase
         $suffix = Str::random();
         $data = [
             "category_id" => 444,
-            "name" => "İndirimli Ürünü -".$suffix,
+            "name" => "İndirimli Ürünü -" . $suffix,
             "price" => 67.12,
             "old_price" => 97.12,
             "lead" => "Bu alan kısa açıklama alanıdır"

@@ -17,15 +17,15 @@
                     <h1 class="h3 mb-3 fw-normal">Giriş Yapın</h1>
 
                     <div class="form-group mt-2">
-                        <x-input label="Eposta giriniz" placeholder="Eposta giriniz" field="email" type="email" />
+                        <x-input label="Eposta giriniz" placeholder="Eposta giriniz" field="email" type="email"/>
                     </div>
 
                     <div class="form-group mt-2">
-                        <x-input label="Şifre Giriniz" placeholder="Şifre giriniz" field="password" type="password" />
+                        <x-input label="Şifre Giriniz" placeholder="Şifre giriniz" field="password" type="password"/>
                     </div>
 
                     <div class="form-group  mb-3 mt-2">
-                        <x-checkbox field="remember-me" label="Beni Hatırla" />
+                        <x-checkbox field="remember-me" label="Beni Hatırla"/>
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş</button>
                 </form>

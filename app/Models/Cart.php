@@ -19,7 +19,8 @@ class Cart extends Model
         'is_active'
     ];
 
-    public function details() {
-        return $this->hasMany(CartDetails::class,"cart_id","cart_id");
+    public function details()
+    {
+        return $this->hasMany(CartDetails::class, "cart_id", "cart_id");
     }
 }

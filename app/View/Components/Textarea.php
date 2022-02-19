@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
@@ -19,7 +18,7 @@ class Textarea extends Component
      * @param string $field
      * @param string $value
      */
-    public function __construct(string $label, string $placeholder, string $field, string $value="")
+    public function __construct(string $label, string $placeholder, string $field, string $value = "")
     {
         $this->label = $label;
         $this->placeholder = $placeholder;
