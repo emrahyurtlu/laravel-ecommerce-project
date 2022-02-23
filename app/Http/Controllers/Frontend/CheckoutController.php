@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Helpers\IyzicoAddressHelper;
+use App\Helpers\IyzicoBuyerHelper;
+use App\Helpers\IyzicoOptionsHelper;
+use App\Helpers\IyzicoPaymentCardHelper;
+use App\Helpers\IyzicoRequestHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CreditCard;
@@ -11,18 +16,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Iyzipay\Model\Address;
 use Iyzipay\Model\BasketItem;
 use Iyzipay\Model\BasketItemType;
-use Iyzipay\Model\Buyer;
-use Iyzipay\Model\Currency;
-use Iyzipay\Model\Locale;
 use Iyzipay\Model\Payment;
-use Iyzipay\Model\PaymentCard;
-use Iyzipay\Model\PaymentChannel;
-use Iyzipay\Model\PaymentGroup;
-use Iyzipay\Options;
-use Iyzipay\Request\CreatePaymentRequest;
 
 class CheckoutController extends Controller
 {
@@ -38,12 +34,6 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request): View
     {
-        $name = $request->get("name");
-        $card_no = $request->get("card_no");
-        $expire_month = $request->get("expire_month");
-        $expire_year = $request->get("expire_year");
-        $cvc = $request->get("cvc");
-
         $creditCard = new CreditCard();
         $data = $this->prepare($request, $creditCard->getFillable());
         $creditCard->fill($data);
@@ -59,60 +49,22 @@ class CheckoutController extends Controller
 
 
         // Ödeme isteği oluştur
-        $request = new CreatePaymentRequest();
-        $request->setLocale(Locale::TR);
-        $request->setConversationId($cart->code);
-        $request->setPrice($total);
-        $request->setPaidPrice($total);
-        $request->setCurrency(Currency::TL);
-        $request->setInstallment(1);
-        $request->setBasketId($cart->code);
-        $request->setPaymentChannel(PaymentChannel::WEB);
-        $request->setPaymentGroup(PaymentGroup::PRODUCT);
+        $request = IyzicoRequestHelper::createRequest($cart, $total);
 
         // PaymentCard Nesnesini oluştur.
-        $paymentCard = new PaymentCard();
-        $paymentCard->setCardHolderName($name);
-        $paymentCard->setCardNumber($card_no);
-        $paymentCard->setExpireMonth($expire_month);
-        $paymentCard->setExpireYear($expire_year);
-        $paymentCard->setCvc($cvc);
-        $paymentCard->setRegisterCard(0);
+        $paymentCard = IyzicoPaymentCardHelper::getPaymentCard($creditCard);
         $request->setPaymentCard($paymentCard);
 
         // Buyer nesnesini oluştur
-        $buyer = new Buyer();
-        $buyer->setId($user->user_id);
-        $buyer->setName($user->name);
-        $buyer->setSurname("Doe");
-        $buyer->setGsmNumber("+905350000000");
-        $buyer->setEmail($user->email);
-        $buyer->setIdentityNumber("74300864791");
-        $buyer->setLastLoginDate("2015-10-05 12:43:35");
-        $buyer->setRegistrationDate("2013-04-21 15:12:09");
-        $buyer->setRegistrationAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");
-        $buyer->setIp(\request()->ip());
-        $buyer->setCity("Istanbul");
-        $buyer->setCountry("Turkey");
-        $buyer->setZipCode("34732");
+        $buyer = IyzicoBuyerHelper::getBuyer();
         $request->setBuyer($buyer);
 
         // Kargo adresi nesnelerini oluştur.
-        $shippingAddress = new Address();
-        $shippingAddress->setContactName("Jane Doe");
-        $shippingAddress->setCity("Istanbul");
-        $shippingAddress->setCountry("Turkey");
-        $shippingAddress->setAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");
-        $shippingAddress->setZipCode("34742");
+        $shippingAddress = IyzicoAddressHelper::getAddress();
         $request->setShippingAddress($shippingAddress);
 
         // Fatura adresi nesnelerini oluştur.
-        $billingAddress = new Address();
-        $billingAddress->setContactName("Jane Doe");
-        $billingAddress->setCity("Istanbul");
-        $billingAddress->setCountry("Turkey");
-        $billingAddress->setAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");
-        $billingAddress->setZipCode("34742");
+        $billingAddress = IyzicoAddressHelper::getAddress();
         $request->setBillingAddress($billingAddress);
 
         // Sepetteki ürünleri (CartDetails) BasketItem listesi olarak hazırla
@@ -120,10 +72,7 @@ class CheckoutController extends Controller
         $request->setBasketItems($basketItems);
 
         //Options Nesnesi Oluştur
-        $options = new Options();
-        $options->setApiKey(env("TEST_IYZI_API_KEY"));
-        $options->setSecretKey(env("TEST_IYZI_SECRET_KEY"));
-        $options->setBaseUrl(env("TEST_IYZI_BASE_URL"));
+        $options = IyzicoOptionsHelper::getTestOptions();
 
         // Ödeme yap
         $payment = Payment::create($request, $options);
@@ -132,28 +81,13 @@ class CheckoutController extends Controller
         if ($payment->getStatus() == "success") {
 
             // Sepeti sona erdir.
-            $cart->is_active = false;
-            $cart->save();
+            $this->finalizeCart($cart);
 
             // Sipariş oluştur
-            $order = new Order([
-                "cart_id" => $cart->cart_id,
-                "code" => $cart->code
-            ]);
-            $order->save();
-
-            // Sipariş detaylarını oluştur
-            $order->details()->create($cart->details);
+            $order = $this->createOrderWithDetails($cart);
 
             //Fatura Oluştur
-            $invoice = new Invoice([
-                "cart_id" => $order->order_id,
-                "code" => $order->code
-            ]);
-
-            //Fatura detaylarını oluştur
-            $invoice->details()->create($order->details);
-
+            $this->createInvoiceWithDetails($order);
 
             return view("frontend.checkout.success");
 
@@ -163,9 +97,6 @@ class CheckoutController extends Controller
         }
     }
 
-    /**
-     * @return float
-     */
     private function calculateCartTotal(): float
     {
         $total = 0;
@@ -188,9 +119,6 @@ class CheckoutController extends Controller
         return $cart;
     }
 
-    /**
-     * @return array
-     */
     private function getBasketItems(): array
     {
         $basketItems = array();
@@ -213,6 +141,12 @@ class CheckoutController extends Controller
         return $basketItems;
     }
 
+    private function finalizeCart(Cart $cart)
+    {
+        $cart->is_active = false;
+        $cart->save();
+    }
+
     private function createOrderWithDetails(Cart $cart): Order
     {
         $order = new Order([
@@ -221,7 +155,13 @@ class CheckoutController extends Controller
         ]);
         $order->save();
 
-        $order->details()->create($cart->details);
+        foreach ($cart->details as $detail) {
+            $order->details()->create([
+                'order_id' => $order->order_id,
+                'product_id' => $detail->product_id,
+                'quantity' => $detail->quantity
+            ]);
+        }
 
         return $order;
     }
@@ -234,12 +174,15 @@ class CheckoutController extends Controller
         ]);
 
         //Fatura Detaylarını Ekle
-        $invoice->details()->create($order->details);
-    }
+        foreach ($order->details as $detail) {
+            $invoice->details()->create([
+                'invoice_id' => $invoice->invoice_id,
+                'product_id' => $detail->product_id,
+                'quantity' => $detail->quantity,
+                'unit_price' => $detail->product->price,
+                'total' => ($detail->quantity * $detail->product->price),
+            ]);
+        }
 
-    private function finalizeCart(Cart $cart)
-    {
-        $cart->is_active = false;
-        $cart->save();
     }
 }

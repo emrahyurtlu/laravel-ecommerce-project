@@ -24,7 +24,8 @@ class IyzicoBasketItemsHelper
             $basketItem->setPrice($detail->product->price);
 
             for ($i = 0; $i < $detail->quantity; $i++) {
-                array_push($basketItems, $basketItem);
+                //array_push($basketItems, $basketItem);
+                $basketItems[] = $basketItem;
             }
         }
 

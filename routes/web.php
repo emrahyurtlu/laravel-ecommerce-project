@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Backend\AddressController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\ProductImageController;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;

@@ -47,20 +47,10 @@ class CartController extends Controller
     public function add(Product $product, int $quantity = 1): RedirectResponse
     {
         $cart = $this->getOrCreateCart();
-        $details = new CartDetails(
-            [
-                "cart_id" => $cart->cart_id,
-                "product_id" => $product->product_id,
-                "quantity" => $quantity,
-            ]
-        );
-        $details->save();
-
-        /*$cart->details()->create([
+        $cart->details()->create([
             "product_id" => $product->product_id,
             "quantity" => $quantity,
-        ]);*/
-
+        ]);
 
         return redirect($this->return_url);
     }

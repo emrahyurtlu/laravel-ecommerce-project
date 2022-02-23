@@ -12,7 +12,7 @@ class IyzicoAddressHelper
     public static function getAddress(): Address
     {
         $address = new Address();
-        $address->setContactName("Jane Doe");
+        $address->setContactName("John Doe");
         $address->setCity("Istanbul");
         $address->setCountry("Turkey");
         $address->setAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");

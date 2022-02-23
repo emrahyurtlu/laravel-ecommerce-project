@@ -14,9 +14,10 @@ class IyzicoBuyerHelper
      * @param Address $addr
      * @return Buyer
      */
-    public static function getBuyer(Address $addr): Buyer
+    public static function getBuyer(): Buyer
     {
         $user = Auth::user();
+        $addr = $user->addrs[0];
         $buyer = new Buyer();
         $buyer->setId($user->user_id);
         $buyer->setName($user->name);

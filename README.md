@@ -7,70 +7,44 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Laravel 8 ile Iyzico Entegrasyonlu Eticaret Projesi Geliştirmek
+Projemizin videoları aşağıdaki gibidir:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and
-creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in
-many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache)
-  storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all
-modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video
-tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging
-into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in
-becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in
-the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by
-the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell
-via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- [1. Proje Tanıtımı](https://www.youtube.com/watch?v=XaJrXSR1kzI&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=1)
+- [2. Gerekli Araçların Kurulumu ve Proje Oluşturmak](https://www.youtube.com/watch?v=kQezZuMttXg&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=2)
+- [3. Laravel Projesinin Hazırlanması](https://www.youtube.com/watch?v=tbre_qlzizw&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=3)
+- [4. Kullanıcı Modülüne Hazırlık](https://www.youtube.com/watch?v=tX_PU1lybis&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=4)
+- [5. Kullanıcı Modülünü Geliştirmek Kısım - 1](https://www.youtube.com/watch?v=e5OO1Mm4G6s&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=5)
+- [6. Kullanıcı Modülünü Geliştirmek Kısım - 2](https://www.youtube.com/watch?v=SO7cmMQUGq0&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=6)
+- [7. Kullanıcı Modülünü Geliştirmek Kısım - 3](https://www.youtube.com/watch?v=D-MKxO8SdUU&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=7)
+- [8. Kullanıcı Modülünü Geliştirmek Kısım - 4](https://www.youtube.com/watch?v=FeGC6OJGp_o&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=8)
+- [9. Kullanıcı Modülünü Geliştirmek Kısım - 5](https://www.youtube.com/watch?v=TnJSfVajtu4&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=9)
+- [10. Validation İşlemleri ve Hata Yönetimi](https://www.youtube.com/watch?v=zbciicIvK0M&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=10)
+- [11. Şifre Değiştirme Ekranı](https://www.youtube.com/watch?v=Nx3uSu0Jxb8&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=11)
+- [12. Temalar ile Çalışmak](https://www.youtube.com/watch?v=i8sFnYzo6WA&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=12)
+- [13. UserController Code Review Kısım - 1](https://www.youtube.com/watch?v=hLD3AfqeaJc&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=13)
+- [14. UserController Code Review Kısım - 2](https://www.youtube.com/watch?v=e0k7K9cV7Yk&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=14)
+- [15. UserController İçin Test Yazılması](https://www.youtube.com/watch?v=2Cq2NUhoudw&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=15)
+- [16. Adres Modülüne Hazırlık Kısım - 1](https://www.youtube.com/watch?v=cEhWYcIjhEE&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=16)
+- [17. Migration İşlemleri ve AddressControllerTest Yazılması](https://www.youtube.com/watch?v=r1dgAkSu72g&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=17)
+- [18. AddressController'ı Geliştirmek Model Relations](https://www.youtube.com/watch?v=jM7RNbrT21c&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=18)
+- [19. Adres Modülünü Geliştirmek Kısım - 1](https://www.youtube.com/watch?v=tnuiVThORfk&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=19)
+- [20. Adres Modülünü Geliştirmek Kısım - 2](https://www.youtube.com/watch?v=4lfCaG35KkE&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=20)
+- [21. Html Component Tanımlamak Kısım - 1](https://www.youtube.com/watch?v=Y4boE3trBnw&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=21)
+- [22. Html Component Kullanımı Kısım - 2](https://www.youtube.com/watch?v=cozXm4AsCZE&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=22)
+- [23. Category Modülünü Geliştirmek Kısım - 1](https://www.youtube.com/watch?v=S3uNhcftvc8&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=23)
+- [24. Category Modülünü Geliştirmek Kısım - 2](https://www.youtube.com/watch?v=QOAtt16QZ70&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=24)
+- [25. Product Modülünü Geliştirmek Kısım - 1](https://www.youtube.com/watch?v=rPHhfTavvxc&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=25)
+- [26. Product Modülünü Geliştirmek Kısım - 2](https://www.youtube.com/watch?v=gEeadgjL8WM&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=26)
+- [27. ProductImages Modülünü Geliştirmek Kısım - 1](https://www.youtube.com/watch?v=jEJMOMvuO8c&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=27)
+- [28. ProductImages Modülünü Geliştirmek Kısım - 2](https://www.youtube.com/watch?v=I33TIsMVYa0&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=28)
+- [29. Cart ve CartDetails Modellerinin Eklenmesi](https://www.youtube.com/watch?v=V0oNGOoB7cg&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=29)
+- [30. Order ve OrderDetails Modellerinin Eklenmesi](https://www.youtube.com/watch?v=1fUzkIpXPy4&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=30)
+- [31. Invoice ve InvoiceDetails Modellerinin Eklenmesi](https://www.youtube.com/watch?v=-_06qlfwdh4&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=31)
+- [32. Arayüz Tasarımı Kısım - 1](https://www.youtube.com/watch?v=mBWzpZt6zcU&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=32)
+- [33. Arayüz Tasarımı Kısım - 2](https://www.youtube.com/watch?v=EOdp2tD60QE&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=33)
+- [34. Arayüz Tasarımı Kısım - 3](https://www.youtube.com/watch?v=88BEgDTyqpQ&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=34)
+- [35. Ürünü Sepete Ekle ve Sepetten Sil](https://www.youtube.com/watch?v=HQssAva4qQc&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=35)
+- [36. Iyzico entegrasyonu ve Sepetteki ürünlerin satın alınması](https://www.youtube.com/watch?v=KvBADaYaN0g&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=36)
+- [37. Refactoring - CheckoutController](https://www.youtube.com/watch?v=Sa7xnhBGN80&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=37)
+- [38. Refactoring - Proje Finali](https://www.youtube.com/watch?v=GND_FctXBPs&list=PLz_s8jsFYEUUbC0q3nEGeCXI7usyEXDLR&index=38)
